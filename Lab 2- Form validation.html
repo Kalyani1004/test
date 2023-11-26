@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+    <title>Form Validation</title>
+<style>
+    body{
+        background-color: rgb(246, 180, 246);
+        text-align: center;
+        font-size: 20px;
+        color: darkblue;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+       
+    }
+    input{
+        font-size: 20px;
+        height: 25px;
+        width: 200px;
+    }
+    .but{
+        height:50px;
+        width: 150px;
+        font-weight: bold;
+        background-color: rgb(110, 241, 139);
+    }
+    .formerror{
+        color: red;
+        font-size: 15px;
+    }
+    .container{
+        display:block;
+
+        border: 5px solid black;
+        border-radius: 2px;
+        border-width: 2px;
+        border-style: hidden;
+        width: 500px;
+        padding: 50px;
+        margin: auto;
+        margin-top: 30px;
+        background-color: rgb(224, 220, 0);
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+    <form  name="myform" onsubmit="return validateForm()" >
+        <div class="formdesign" id="fname">
+       First Name: <input type="text"name="fname" ><span class="formerror"><b></b></span>
+        </div><br><br>
+        <div class="formdesign" id="lname">
+            Last Name: <input type="text"name="lname" ><span class="formerror"><b></b></span>
+             </div><br><br>
+        <div class="formdesign" id="email">
+        Email: <input type="email"name="email" ><span class="formerror"><b></b></span>
+        </div><br><br>
+        <div class="formdesign" id="pass"required>
+        Password: <input type="password"name="pass" ><span class="formerror"><b></b></span>
+        </div><br><br>
+        <div class="formdesign" id="cpass">
+        Confirm Password: <input type="password"name="cpass">
+        <span class="formerror"><b></b></span>
+        </div><br><br>
+        <input type="Submit" class="but" value="Submit">
+    </form>
+</div>
+    </body>
+<script>
+    function clearErrors(){
+
+        errors=document.getElementsByClassName('formerror');
+        for(let item of errors)
+        {
+            item.innerHTML="";
+        }
+    }
+function seterror(id,error){
+    //sets error inside tag of id
+    element=document.getElementById(id);
+    element.getElementsByClassName('formerror')[0].innerHTML=error;
+}
+function validateForm(){
+    var returnval=true;
+    clearErrors();
+    var name=document.forms['myform']["fname"].value;
+    if(name.length<2){
+        seterror("fname"," Length of name is too short");
+        returnval=false;
+    }
+
+    if(name.length==0){
+        seterror("fname","Enter your name");
+        returnval=false;
+    }
+    var name=document.forms['myform']["lname"].value;
+    if(name.length<2){
+        seterror("lname"," Length of name is too short");
+        returnval=false;
+    }
+
+    if(name.length==0){
+        seterror("lname","Enter your name");
+        returnval=false;
+    }
+    var email=document.forms['myform']["email"].value;
+    if(email.length==0){
+    seterror("email"," Enter email");
+    returnval=false;
+    }
+    
+    var email=document.forms['myform']["email"].value;
+    if(email.length>20){
+    seterror("email"," Enter valid email");
+    returnval=false;
+    }
+    var pass=document.forms['myform']["pass"].value;
+    if(pass.length<6){
+    
+    seterror("pass"," Password must be atleast 6 charecters");
+    returnval=false;
+    }
+    var cpass=document.forms['myform']["cpass"].value;
+    if(cpass!=pass){
+    
+    seterror("cpass"," Password and confirm password should be matched");
+    returnval=false;
+    }
+
+return returnval;
+}
+</script>
+</html>
