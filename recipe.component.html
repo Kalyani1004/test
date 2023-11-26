@@ -1,0 +1,46 @@
+<div class="recipe-book classy-cute">
+  <div class="recipe-header">
+    <h2>Maharashtra Munchies: A Culinary Journey</h2>
+    <p>Spice up Your Kitchen with Maharashtrian Magic</p>
+  </div>
+
+  <div class="recipe-tabs">
+    <div class="tab" *ngFor="let recipe of recipes" (click)="selectRecipe(recipe)">
+      {{ recipe.name }}
+    </div>
+  </div>
+
+  <div class="recipe-cards-container">
+    <div class="recipe-card" *ngIf="selectedRecipe">
+      <div class="header">
+        <div class="recipe-image" [style.background-image]="'url(' + selectedRecipe.imageUrl + ')'"></div>
+        <div class="recipe-details">
+          <h1>{{ selectedRecipe.name }}</h1>
+        </div>
+      </div>
+      <div class="recipe-info">
+        <div class="info-section">
+          <h3>About:</h3>
+          <p class="description">{{ selectedRecipe.description }}</p>
+        </div>
+
+        <div class="info-section">
+          <h3>Ingredients:</h3>
+          <p class="ingredients">{{ selectedRecipe.ingredients.join(', ') }}</p>
+        </div>
+
+        <div class="info-section">
+          <h3>Procedure:</h3>
+          <ol class="instructions">
+            <li *ngFor="let instruction of selectedRecipe.instructions">{{ instruction }}</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button (click)="addToCart(selectedRecipe)">Add to Cart</button>
+      </div>
+    </div>
+   
+  </div>
+

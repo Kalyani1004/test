@@ -1,0 +1,36 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <h2>Your List</h2>
+    <p>Total Cost: INR {{ getTotalCost() | number:'1.2-2' }}</p>
+  </div>
+
+  <div class="cart-item" *ngFor="let item of cartItems; let i = index">
+    <div class="item-header">
+    {{ item.name }}<br><br>
+    </div>
+    <div class="item-details">
+      <div class="quantity-container">
+        <button mat-icon-button (click)="decreaseQuantity(i)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span class="quantity">{{ item.quantity }}</span>
+        <button mat-icon-button (click)="increaseQuantity(i)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <br>
+      <p>Total Price: {{ item.price }}</p>
+      <p>Ingredients:</p>
+      <ul>
+        <li *ngFor="let ingredient of item.ingredients">
+          {{ ingredient }} 
+          <button type="button" (click)="remove(i)" class="remove-button">Remove</button><br><br>
+        </li>
+      </ul>
+    </div>
+    <div class="item-actions">
+      <button (click)="removeItem(i)" class="remove-button1">Remove</button>
+    </div>
+  </div>
+<br>
+</div>

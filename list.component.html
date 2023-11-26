@@ -1,0 +1,36 @@
+<div class="shopping-container">
+  <div class="header">
+    <h1>Shopping List</h1>
+  </div>
+  <hr>
+
+  <div class="form-section">
+    <label for="name">Item Name:</label>
+    <input type="text" [(ngModel)]="name" id="name" class="input-field">
+    <label for="price">Item Price:</label>
+    <input type="text" [(ngModel)]="price" id="price" class="input-field">
+    <label for="quantity">Quantity:</label>
+    <input type="number" [(ngModel)]="quantity" id="quantity" class="input-field">
+    <button type="button" (click)="add()" class="add-button">Add to Cart</button>
+  </div>
+
+  <ul class="item-list">
+    <li *ngFor="let item of shoppingList; let i = index" class="item">
+      <div class="item-details">
+        <h2>{{ item.name }}</h2>
+        <p>Price: ₹{{ item.price }} | Quantity: {{ item.quantity }}</p>
+      </div>
+      <div class="item-actions">
+        <button mat-icon-button (click)="increase(item)">
+          <mat-icon style="font-size: 24px;">+</mat-icon>
+        </button>
+        <span class="quantity">{{ item.quantity }}</span>
+        <button mat-icon-button (click)="decrease(item)">
+          <mat-icon style="font-size: 24px;">-</mat-icon>
+        </button>
+        <button type="button" (click)="remove(i)" class="remove-button">Remove</button>
+        <p class="total-price">Total: ₹{{ item.quantity * item.price }}</p>
+      </div>
+    </li>
+  </ul>
+</div>
