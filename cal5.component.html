@@ -1,0 +1,20 @@
+<p >Calculator</p>
+<h5>*Enter any two number for calculation.*</h5>
+<div>
+    <label>First number : </label>
+    <input [(ngModel)]="num1" type="number" name="n1" class="formcontrol"><br><br>
+    <label>Second number : </label>
+    <input [(ngModel)]="num2" type="number" name="n2" class="formcontrol"><br><br><br>
+</div>
+<div>
+    <button class="button btn" (click)="add()">Add</button>
+    <button class="button btn" (click)="sub()">Subtract</button>
+    <button class="button btn" (click)="mul()">Multiply</button>
+    <button class="button btn" (click)="div()">Divide</button>
+    <button class="button btn" (click)="clear()">Clear</button>
+</div>
+<div class="res">
+    <h3>
+        Result is {{answer}}. </h3>
+    <h4>The {{operator}} of {{num1}} and {{num2}} is {{answer}}.</h4>
+</div>
