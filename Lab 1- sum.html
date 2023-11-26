@@ -1,0 +1,46 @@
+<html>
+   <head><title>Addition</title>
+<style>
+body{
+background-color: #C1C8E4; 
+color : rgb(59, 32, 211);
+font-size : 50px;
+font-family : Bell MT;
+text-align: center;
+}
+button{
+font-size : 50px;
+color: #84CEEB;
+background-color:  #8860D0;
+}
+input{
+   height: 50px;
+   width: 150px;
+   font-size: 25px;
+}
+p{
+text-align: center;
+}
+button:hover{
+background-color: rgb(98, 183, 244) ;
+color: rgb(106, 106, 207)}
+</style>  
+<div class="container">
+   <label for="num1">Enter Number 1: </label>
+   <input type="number" name="num1" id="num1"> <br><br>
+   <label for="num2">Enter Number 2: </label>
+   <input type="number" name="num2" id="num2"> <br><br>
+   <button onclick="addition()">Add</button> <br><br>
+   <label for="output" id="output"></label>
+</div>
+<script>
+   function addition()  {
+       let num1 = parseInt(document.getElementById("num1").value);
+       let num2 = parseInt(document.getElementById("num2").value);
+           document.getElementById("output").innerHTML = `Sum is ${num1 + num2}`;
+   }
+</script>
+
+</body>
+
+</html>
